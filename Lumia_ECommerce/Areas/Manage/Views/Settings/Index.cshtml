@@ -1,0 +1,34 @@
+﻿@model List<Settings>
+@{
+    int count =0;
+}
+
+<div class="card-body">
+    <h4 class="card-title">Settings/Table</h4>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Key</th>
+                    <th>Value</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Settings settings in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td><label class="badge badge-outline-secondary">@settings.Key</label></td>
+                        <td>@settings.Value</td>
+                        <td>
+                            <a asp-action="update" asp-controller="settings" asp-route-id="@settings.Id" class="btn btn-outline-primary">Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
